@@ -14,15 +14,15 @@ public class FirstPractice {
 	 * @param tree
 	 * @param n
 	 */
-	public static void TreeLevel(TNode tree, int n) {
-	int i=n;
+	public static void treeLevel(TNode tree, int n) {
+		int i = n;
 		if (tree == null)
 			return;
-		if(i==1)
-			System.out.print(tree.value+"---");
-		TreeLevel(tree.left, --i);
-		i=n;
-		TreeLevel(tree.right, --i);
+		if (i == 1)
+			System.out.print(tree.getValue() + "---");
+		treeLevel(tree.getLeft(), --i);
+		i = n;
+		treeLevel(tree.getRight(), --i);
 	}
 
 	/**
@@ -60,6 +60,7 @@ public class FirstPractice {
 
 	/**
 	 * 将int型转化为16位数字返回字符串
+	 * 
 	 * @param i
 	 * @return
 	 */
@@ -77,40 +78,4 @@ public class FirstPractice {
 
 	}
 
-	public static void main(String[] args) {
-		@SuppressWarnings("unused")
-		File file = new File("D:/test/text.txt");
-		// byte[] buf = FirstPractice.file2buf(file);
-		// for (byte b : buf) {
-		// System.out.println(b);
-		// }
-		// System.out.println(FirstPractice.intToHex(31));
-		TNode a = new TNode();
-		TNode b = new TNode();
-		TNode c = new TNode();
-		TNode d = new TNode();
-		TNode e = new TNode();
-		TNode f = new TNode();
-		TNode g = new TNode();
-		a.value = "a";
-		b.value = "b";
-		c.value = "c";
-		d.value = "d";
-		e.value = "e";
-		f.value = "f";
-		g.value = "g";
-		a.left = b;
-		a.right = d;
-		b.left = g;
-		b.right = e;
-		d.left = c;
-		d.right = f;
-		FirstPractice.TreeLevel(a, 3);
-
-	}
-}
-
-class TNode {
-	String value;
-	TNode left, right;
 }
