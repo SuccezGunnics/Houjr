@@ -92,7 +92,6 @@ public class FirstPractice {
 		TNode e = new TNode();
 		TNode f = new TNode();
 		TNode g = new TNode();
-
 		a.value = "a";
 		b.value = "b";
 		c.value = "c";
@@ -100,14 +99,12 @@ public class FirstPractice {
 		e.value = "e";
 		f.value = "f";
 		g.value = "g";
-
 		a.left = b;
 		a.right = d;
 		b.left = g;
 		b.right = e;
 		d.left = c;
 		d.right = f;
-
 		FirstPractice.TreeLevel(a, 3);
 
 	}
