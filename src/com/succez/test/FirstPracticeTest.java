@@ -4,8 +4,9 @@ import java.io.File;
 
 import org.junit.Test;
 
-import day1.FirstPractice;
-import day1.TNode;
+import com.succez.exception.MyException;
+import com.succez.practice.FirstPractice;
+import com.succez.practice.TNode;
 
 public class FirstPracticeTest {
 
@@ -15,7 +16,12 @@ public class FirstPracticeTest {
 	 */
 	public void testFile2buf() {
 		File file = new File("D:/test/text.txt");
-		byte[] buf = FirstPractice.file2buf(file);
+		byte[] buf = null;
+		try {
+			buf = FirstPractice.file2buf(file);
+		} catch (MyException e) {
+			e.printStackTrace();
+		}
 		for (byte b : buf) {
 			System.out.println(b);
 		}
@@ -23,7 +29,10 @@ public class FirstPracticeTest {
 
 	@Test
 	public void testIntToHex() {
-		System.out.println(FirstPractice.intToHex(1023));
+		int i = 15;
+		assert (FirstPractice.intToHex(15).equalsIgnoreCase(Integer
+				.toHexString(i))) : "´íÎó";
+		System.out.println("×ª»»ÕýÈ·£¡");
 	}
 
 	@Test
@@ -51,7 +60,7 @@ public class FirstPracticeTest {
 		b.setRight(e);
 		d.setLeft(c);
 		d.setRight(f);
-		FirstPractice.treeLevel(a, 3);
+		FirstPractice.treeLevel(a, -1);
 	}
 
 }

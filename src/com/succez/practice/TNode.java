@@ -1,4 +1,4 @@
-package day1;
+package com.succez.practice;
 
 public class TNode {
 

@@ -1,4 +1,4 @@
-package day1;
+package com.succez.practice;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -6,7 +6,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.succez.exception.MyException;
+
 public class FirstPractice {
+	
+	public static final String HEX = "0123456789abcdef";
 
 	/**
 	 * 要求能返回树tree的第n层的所有节点值， 并且输出顺序为从左到右。
@@ -30,8 +34,9 @@ public class FirstPractice {
 	 * 
 	 * @param fobj
 	 * @return
+	 * @throws MyException 
 	 */
-	public static byte[] file2buf(File fobj) {
+	public static byte[] file2buf(File fobj) throws MyException {
 		InputStream in = null;
 		ByteArrayOutputStream out = null;
 		byte[] buf = null;
@@ -45,15 +50,19 @@ public class FirstPractice {
 			}
 			buf = out.toByteArray();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new MyException("文件读取失败！");
 		} finally {
 			try {
 				out.close();
-				in.close();
 			} catch (IOException e) {
 				e.printStackTrace();
+			} finally {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
-
 		}
 		return buf;
 	}
@@ -65,15 +74,13 @@ public class FirstPractice {
 	 * @return
 	 */
 	public static String intToHex(int i) {
-		String s = "0123456789abcdef ";
 		StringBuffer sb = new StringBuffer();
-		for (@SuppressWarnings("unused")
-		int j = 0; i >= 16; j++) {
+		while(i>=16){
 			int a = i % 16;
 			i /= 16;
-			sb.append(s.charAt(a));
+			sb.append(HEX.charAt(a));
 		}
-		sb.append(s.charAt(i));
+		sb.append(HEX.charAt(i));
 		return sb.reverse().toString();
 
 	}
