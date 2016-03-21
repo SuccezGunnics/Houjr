@@ -12,9 +12,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 
-import com.succez.exception.MyException;
-
-public class SecondPractive {
+public class FileDownload {
 
 	private static final int cache = 1024;
 
@@ -25,7 +23,7 @@ public class SecondPractive {
 	 * @param filePath
 	 * @throws MyException 
 	 */
-	public static void download(String url, String filePath) throws MyException {
+	public static void download(String url, String filePath) throws IOException {
 
 		InputStream in = null;
 		FileOutputStream out = null;
@@ -40,7 +38,7 @@ public class SecondPractive {
 			writeFile( in,out, cache);
 		
 		} catch (Exception e) {
-			throw new MyException("文件下载出错！");
+			throw new IOException("文件下载出错！");
 		} finally {
 			try {
 				out.close();
@@ -57,7 +55,7 @@ public class SecondPractive {
 		}
 	}
 	
-	private static void writeFile(InputStream in,OutputStream out, int cache) throws MyException {
+	private static void writeFile(InputStream in,OutputStream out, int cache) throws IOException {
 		byte[] buf = new byte[cache];
 		int c = 0;
 		try {
@@ -66,7 +64,7 @@ public class SecondPractive {
 			}
 			out.flush();
 		} catch (IOException e) {
-			throw new MyException("文件下载出错！");
+			throw new IOException("文件下载出错！");
 		}
 	}
 

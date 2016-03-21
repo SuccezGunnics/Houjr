@@ -1,4 +1,4 @@
-package com.succez.practice;
+package com.succez.utils;
 
 public class TNode {
 
