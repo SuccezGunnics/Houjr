@@ -1,10 +1,8 @@
 package com.succez.webserver.model;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.InterruptedIOException;
 import java.io.OutputStream;
 import java.net.ServerSocket;
@@ -15,6 +13,8 @@ import com.succez.practice.Buf2Array;
 public class FirstHttpServer {
 	
 	public void service(int port) throws IOException{
+		// server Á÷Î´¹Ø±Õ¡£
+		@SuppressWarnings("resource")
 		ServerSocket server = new ServerSocket(port);
 		while(true){
 			Socket client = server.accept();
@@ -44,12 +44,8 @@ class ServerThread extends Thread{
 	@Override
 	public void run(){
 		InputStream in = null;
-		OutputStream out = null;
-		BufferedReader reader = null;
-		
 		try {
 			in = client.getInputStream();
-			reader = new BufferedReader(new InputStreamReader(in));
 			int readint;
 			byte[] buf = new byte[1024];
 			OutputStream os = client.getOutputStream();

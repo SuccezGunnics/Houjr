@@ -16,7 +16,7 @@ public class Int2Hex {
 		if (number == Integer.MIN_VALUE) {
 			return "-80000000";
 		}
-		int position = 0;
+		int position = 8;
 		char[] hexChars = new char[9];
 		Boolean isNegative = false;
 		if (number < 0) {
@@ -26,16 +26,12 @@ public class Int2Hex {
 		while (number >= 16) {
 			int a = number % 16;
 			number /= 16;
-			hexChars[position++] = HEX[a];
+			hexChars[position--] = HEX[a];
 		}
 		hexChars[position] = HEX[number];
 		if (isNegative) {
-			hexChars[++position] = '-';
+			hexChars[--position] = '-';
 		}
-		StringBuilder strHex = new StringBuilder();
-		for(int count = position;count>=0;count--){
-			strHex.append(hexChars[count]);
-		}
-	return strHex.toString();
+	return String.valueOf(hexChars).trim();
 	}
 }
